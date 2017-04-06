@@ -21541,9 +21541,15 @@
 
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-	var _index = __webpack_require__(179);
+	var _reactjsMdEditor = __webpack_require__(179);
 
-	var _marked = __webpack_require__(201);
+	var _reactjsMdEditor2 = _interopRequireDefault(_reactjsMdEditor);
+
+	var _reactjsMdViewer = __webpack_require__(195);
+
+	var _reactjsMdViewer2 = _interopRequireDefault(_reactjsMdViewer);
+
+	var _marked = __webpack_require__(200);
 
 	var _marked2 = _interopRequireDefault(_marked);
 
@@ -21563,16 +21569,16 @@
 
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-	var He = function (_Component) {
-		_inherits(He, _Component);
+	var MyHeading = function (_Component) {
+		_inherits(MyHeading, _Component);
 
-		function He() {
-			_classCallCheck(this, He);
+		function MyHeading() {
+			_classCallCheck(this, MyHeading);
 
-			return _possibleConstructorReturn(this, (He.__proto__ || Object.getPrototypeOf(He)).apply(this, arguments));
+			return _possibleConstructorReturn(this, (MyHeading.__proto__ || Object.getPrototypeOf(MyHeading)).apply(this, arguments));
 		}
 
-		_createClass(He, [{
+		_createClass(MyHeading, [{
 			key: 'render',
 			value: function render() {
 				return _react2.default.createElement(
@@ -21583,7 +21589,7 @@
 			}
 		}]);
 
-		return He;
+		return MyHeading;
 	}(_react.Component);
 
 	var Example = function (_Component2) {
@@ -21622,12 +21628,12 @@
 					_react2.default.createElement(
 						'div',
 						{ className: 'editor' },
-						_react2.default.createElement(_index.MDEditor, { value: this.state.code, onChange: this.updateCode.bind(this) })
+						_react2.default.createElement(_reactjsMdEditor2.default, { value: this.state.code, onChange: this.updateCode.bind(this) })
 					),
 					_react2.default.createElement(
 						'div',
 						{ className: 'preview' },
-						_react2.default.createElement(_index.MDRender, { text: this.state.code, heading: He })
+						_react2.default.createElement(_reactjsMdViewer2.default, { text: this.state.code, heading: MyHeading })
 					)
 				);
 			}
@@ -21645,49 +21651,11 @@
 	'use strict';
 
 	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-
-	var _MDEditor = __webpack_require__(180);
-
-	Object.defineProperty(exports, 'MDEditor', {
-	  enumerable: true,
-	  get: function get() {
-	    return _MDEditor.MDEditor;
-	  }
-	});
-
-	var _MDRender = __webpack_require__(196);
-
-	Object.defineProperty(exports, 'MDRender', {
-	  enumerable: true,
-	  get: function get() {
-	    return _MDRender.MDRender;
-	  }
-	});
-
-/***/ },
-/* 180 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
-
-	Object.defineProperty(exports, "__esModule", {
 		value: true
 	});
-	exports.MDEditor = undefined;
+	exports.ReactMDEditor = undefined;
 
-	var _createClass = function () {
-		function defineProperties(target, props) {
-			for (var i = 0; i < props.length; i++) {
-				var descriptor = props[i];descriptor.enumerable = descriptor.enumerable || false;descriptor.configurable = true;if ("value" in descriptor) descriptor.writable = true;Object.defineProperty(target, descriptor.key, descriptor);
-			}
-		}return function (Constructor, protoProps, staticProps) {
-			if (protoProps) defineProperties(Constructor.prototype, protoProps);if (staticProps) defineProperties(Constructor, staticProps);return Constructor;
-		};
-	}();
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 	var _react = __webpack_require__(1);
 
@@ -21695,55 +21663,41 @@
 
 	var _reactDom = __webpack_require__(32);
 
-	var _classnames = __webpack_require__(181);
+	var _classnames = __webpack_require__(180);
 
 	var _classnames2 = _interopRequireDefault(_classnames);
 
-	var _codemirror = __webpack_require__(182);
+	var _codemirror = __webpack_require__(181);
 
 	var _codemirror2 = _interopRequireDefault(_codemirror);
 
-	var _icons = __webpack_require__(183);
+	var _icons = __webpack_require__(182);
 
 	var _icons2 = _interopRequireDefault(_icons);
 
+	__webpack_require__(190);
+
 	__webpack_require__(191);
 
-	__webpack_require__(192);
+	__webpack_require__(193);
 
-	__webpack_require__(194);
+	var _format = __webpack_require__(194);
 
-	var _format = __webpack_require__(195);
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	function _interopRequireDefault(obj) {
-		return obj && obj.__esModule ? obj : { default: obj };
-	}
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-	function _classCallCheck(instance, Constructor) {
-		if (!(instance instanceof Constructor)) {
-			throw new TypeError("Cannot call a class as a function");
-		}
-	}
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
-	function _possibleConstructorReturn(self, call) {
-		if (!self) {
-			throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
-		}return call && ((typeof call === "undefined" ? "undefined" : _typeof(call)) === "object" || typeof call === "function") ? call : self;
-	}
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-	function _inherits(subClass, superClass) {
-		if (typeof superClass !== "function" && superClass !== null) {
-			throw new TypeError("Super expression must either be null or a function, not " + (typeof superClass === "undefined" ? "undefined" : _typeof(superClass)));
-		}subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } });if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass;
-	}
+	var ReactMDEditor = exports.ReactMDEditor = function (_Component) {
+		_inherits(ReactMDEditor, _Component);
 
-	var MDEditor = exports.MDEditor = function (_Component) {
-		_inherits(MDEditor, _Component);
+		function ReactMDEditor(props) {
+			_classCallCheck(this, ReactMDEditor);
 
-		function MDEditor(props) {
-			_classCallCheck(this, MDEditor);
-
-			var _this = _possibleConstructorReturn(this, (MDEditor.__proto__ || Object.getPrototypeOf(MDEditor)).call(this, props));
+			var _this = _possibleConstructorReturn(this, (ReactMDEditor.__proto__ || Object.getPrototypeOf(ReactMDEditor)).call(this, props));
 
 			_this.state = {
 				isFocused: false,
@@ -21753,7 +21707,7 @@
 			return _this;
 		}
 
-		_createClass(MDEditor, [{
+		_createClass(ReactMDEditor, [{
 			key: 'componentDidMount',
 			value: function componentDidMount() {
 				this.codeMirror = _codemirror2.default.fromTextArea((0, _reactDom.findDOMNode)(this.refs.codemirror), this.getOptions());
@@ -21845,33 +21799,65 @@
 
 				var labelClass = isTextIcon ? 'MDEditor_toolbarButton_label-icon' : 'MDEditor_toolbarButton_label';
 
-				return _react2.default.createElement('button', { className: className, onClick: action, title: formatKey }, isTextIcon ? null : this.renderIcon(_icons2.default[formatKey]), _react2.default.createElement('span', { className: labelClass }, label));
+				return _react2.default.createElement(
+					'button',
+					{ className: className, onClick: action, title: formatKey },
+					isTextIcon ? null : this.renderIcon(_icons2.default[formatKey]),
+					_react2.default.createElement(
+						'span',
+						{ className: labelClass },
+						label
+					)
+				);
 			}
 		}, {
 			key: 'renderToolbar',
 			value: function renderToolbar() {
-				return _react2.default.createElement('div', { className: 'MDEditor_toolbar' }, this.renderButton('h1', 'h1'), this.renderButton('h2', 'h2'), this.renderButton('h3', 'h3'), this.renderButton('bold', 'b'), this.renderButton('italic', 'i'), this.renderButton('oList', 'ol'), this.renderButton('uList', 'ul'), this.renderButton('quote', 'q'), this.renderButton('link', 'a'), this.renderButton('image', 'img'));
+				return _react2.default.createElement(
+					'div',
+					{ className: 'MDEditor_toolbar' },
+					this.renderButton('h1', 'h1'),
+					this.renderButton('h2', 'h2'),
+					this.renderButton('h3', 'h3'),
+					this.renderButton('bold', 'b'),
+					this.renderButton('italic', 'i'),
+					this.renderButton('oList', 'ol'),
+					this.renderButton('uList', 'ul'),
+					this.renderButton('quote', 'q'),
+					this.renderButton('link', 'a'),
+					this.renderButton('image', 'img')
+				);
 			}
 		}, {
 			key: 'render',
 			value: function render() {
 				var editorClassName = (0, _classnames2.default)('MDEditor_editor', { 'MDEditor_editor--focused': this.state.isFocused });
-				return _react2.default.createElement('div', { className: 'MDEditor' }, this.renderToolbar(), _react2.default.createElement('div', { className: editorClassName }, _react2.default.createElement('textarea', { ref: 'codemirror', name: this.props.path, defaultValue: this.props.value, autoComplete: 'off' })));
+				return _react2.default.createElement(
+					'div',
+					{ className: 'MDEditor' },
+					this.renderToolbar(),
+					_react2.default.createElement(
+						'div',
+						{ className: editorClassName },
+						_react2.default.createElement('textarea', { ref: 'codemirror', name: this.props.path, defaultValue: this.props.value, autoComplete: 'off' })
+					)
+				);
 			}
 		}]);
 
-		return MDEditor;
+		return ReactMDEditor;
 	}(_react.Component);
 
-	MDEditor.propTypes = {
+	ReactMDEditor.propTypes = {
 		onChange: _react2.default.PropTypes.func,
 		options: _react2.default.PropTypes.object,
 		path: _react2.default.PropTypes.string,
 		value: _react2.default.PropTypes.string
 	};
+	exports.default = ReactMDEditor;
 
 /***/ },
-/* 181 */
+/* 180 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
@@ -21925,7 +21911,7 @@
 
 
 /***/ },
-/* 182 */
+/* 181 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// CodeMirror, copyright (c) by Marijn Haverbeke and others
@@ -31236,23 +31222,23 @@
 
 
 /***/ },
-/* 183 */
+/* 182 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
 	module.exports = {
-		bold: __webpack_require__(184),
-		italic: __webpack_require__(185),
-		link: __webpack_require__(186),
-		image: __webpack_require__(187),
-		uList: __webpack_require__(188),
-		oList: __webpack_require__(189),
-		quote: __webpack_require__(190)
+		bold: __webpack_require__(183),
+		italic: __webpack_require__(184),
+		link: __webpack_require__(185),
+		image: __webpack_require__(186),
+		uList: __webpack_require__(187),
+		oList: __webpack_require__(188),
+		quote: __webpack_require__(189)
 	};
 
 /***/ },
-/* 184 */
+/* 183 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -31260,7 +31246,7 @@
 	module.exports = '<svg width="1792" height="1792" viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg"><path d="M747 1521q74 32 140 32 376 0 376-335 0-114-41-180-27-44-61.5-74t-67.5-46.5-80.5-25-84-10.5-94.5-2q-73 0-101 10 0 53-.5 159t-.5 158q0 8-1 67.5t-.5 96.5 4.5 83.5 12 66.5zm-14-746q42 7 109 7 82 0 143-13t110-44.5 74.5-89.5 25.5-142q0-70-29-122.5t-79-82-108-43.5-124-14q-50 0-130 13 0 50 4 151t4 152q0 27-.5 80t-.5 79q0 46 1 69zm-541 889l2-94q15-4 85-16t106-27q7-12 12.5-27t8.5-33.5 5.5-32.5 3-37.5.5-34v-65.5q0-982-22-1025-4-8-22-14.5t-44.5-11-49.5-7-48.5-4.5-30.5-3l-4-83q98-2 340-11.5t373-9.5q23 0 68.5.5t67.5.5q70 0 136.5 13t128.5 42 108 71 74 104.5 28 137.5q0 52-16.5 95.5t-39 72-64.5 57.5-73 45-84 40q154 35 256.5 134t102.5 248q0 100-35 179.5t-93.5 130.5-138 85.5-163.5 48.5-176 14q-44 0-132-3t-132-3q-106 0-307 11t-231 12z"/></svg>';
 
 /***/ },
-/* 185 */
+/* 184 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -31268,7 +31254,7 @@
 	module.exports = '<svg width="1792" height="1792" viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg"><path d="M384 1662l17-85q6-2 81.5-21.5t111.5-37.5q28-35 41-101 1-7 62-289t114-543.5 52-296.5v-25q-24-13-54.5-18.5t-69.5-8-58-5.5l19-103q33 2 120 6.5t149.5 7 120.5 2.5q48 0 98.5-2.5t121-7 98.5-6.5q-5 39-19 89-30 10-101.5 28.5t-108.5 33.5q-8 19-14 42.5t-9 40-7.5 45.5-6.5 42q-27 148-87.5 419.5t-77.5 355.5q-2 9-13 58t-20 90-16 83.5-6 57.5l1 18q17 4 185 31-3 44-16 99-11 0-32.5 1.5t-32.5 1.5q-29 0-87-10t-86-10q-138-2-206-2-51 0-143 9t-121 11z"/></svg>';
 
 /***/ },
-/* 186 */
+/* 185 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -31276,7 +31262,7 @@
 	module.exports = '<svg width="1792" height="1792" viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg"><path d="M1520 1216q0-40-28-68l-208-208q-28-28-68-28-42 0-72 32 3 3 19 18.5t21.5 21.5 15 19 13 25.5 3.5 27.5q0 40-28 68t-68 28q-15 0-27.5-3.5t-25.5-13-19-15-21.5-21.5-18.5-19q-33 31-33 73 0 40 28 68l206 207q27 27 68 27 40 0 68-26l147-146q28-28 28-67zm-703-705q0-40-28-68l-206-207q-28-28-68-28-39 0-68 27l-147 146q-28 28-28 67 0 40 28 68l208 208q27 27 68 27 42 0 72-31-3-3-19-18.5t-21.5-21.5-15-19-13-25.5-3.5-27.5q0-40 28-68t68-28q15 0 27.5 3.5t25.5 13 19 15 21.5 21.5 18.5 19q33-31 33-73zm895 705q0 120-85 203l-147 146q-83 83-203 83-121 0-204-85l-206-207q-83-83-83-203 0-123 88-209l-88-88q-86 88-208 88-120 0-204-84l-208-208q-84-84-84-204t85-203l147-146q83-83 203-83 121 0 204 85l206 207q83 83 83 203 0 123-88 209l88 88q86-88 208-88 120 0 204 84l208 208q84 84 84 204z"/></svg>';
 
 /***/ },
-/* 187 */
+/* 186 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -31284,7 +31270,7 @@
 	module.exports = '<svg width="1850" height="1850" viewBox="0 -256 1850 1850"><path d="m 928,704 q 0,14 -9,23 -9,9 -23,9 -66,0 -113,-47 -47,-47 -47,-113 0,-14 9,-23 9,-9 23,-9 14,0 23,9 9,9 9,23 0,40 28,68 28,28 68,28 14,0 23,9 9,9 9,23 z m 224,-130 q 0,-106 -75,-181 -75,-75 -181,-75 -106,0 -181,75 -75,75 -75,181 0,106 75,181 75,75 181,75 106,0 181,-75 75,-75 75,-181 z M 128,0 H 1664 V 128 H 128 V 0 z m 1152,574 q 0,159 -112.5,271.5 Q 1055,958 896,958 737,958 624.5,845.5 512,733 512,574 512,415 624.5,302.5 737,190 896,190 1055,190 1167.5,302.5 1280,415 1280,574 z M 256,1216 h 384 v 128 H 256 V 1216 z M 128,1024 h 1536 v 118 138 H 836 L 772,1152 H 128 v -128 z m 1664,256 V 0 q 0,-53 -37.5,-90.5 Q 1717,-128 1664,-128 H 128 Q 75,-128 37.5,-90.5 0,-53 0,0 v 1280 q 0,53 37.5,90.5 Q 75,1408 128,1408 h 1536 q 53,0 90.5,-37.5 37.5,-37.5 37.5,-90.5 z"/></svg>';
 
 /***/ },
-/* 188 */
+/* 187 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -31292,7 +31278,7 @@
 	module.exports = '<svg width="1792" height="1792" viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg"><path d="M384 1408q0 80-56 136t-136 56-136-56-56-136 56-136 136-56 136 56 56 136zm0-512q0 80-56 136t-136 56-136-56-56-136 56-136 136-56 136 56 56 136zm1408 416v192q0 13-9.5 22.5t-22.5 9.5h-1216q-13 0-22.5-9.5t-9.5-22.5v-192q0-13 9.5-22.5t22.5-9.5h1216q13 0 22.5 9.5t9.5 22.5zm-1408-928q0 80-56 136t-136 56-136-56-56-136 56-136 136-56 136 56 56 136zm1408 416v192q0 13-9.5 22.5t-22.5 9.5h-1216q-13 0-22.5-9.5t-9.5-22.5v-192q0-13 9.5-22.5t22.5-9.5h1216q13 0 22.5 9.5t9.5 22.5zm0-512v192q0 13-9.5 22.5t-22.5 9.5h-1216q-13 0-22.5-9.5t-9.5-22.5v-192q0-13 9.5-22.5t22.5-9.5h1216q13 0 22.5 9.5t9.5 22.5z"/></svg>';
 
 /***/ },
-/* 189 */
+/* 188 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -31300,7 +31286,7 @@
 	module.exports = '<svg width="1792" height="1792" viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg"><path d="M381 1620q0 80-54.5 126t-135.5 46q-106 0-172-66l57-88q49 45 106 45 29 0 50.5-14.5t21.5-42.5q0-64-105-56l-26-56q8-10 32.5-43.5t42.5-54 37-38.5v-1q-16 0-48.5 1t-48.5 1v53h-106v-152h333v88l-95 115q51 12 81 49t30 88zm2-627v159h-362q-6-36-6-54 0-51 23.5-93t56.5-68 66-47.5 56.5-43.5 23.5-45q0-25-14.5-38.5t-39.5-13.5q-46 0-81 58l-85-59q24-51 71.5-79.5t105.5-28.5q73 0 123 41.5t50 112.5q0 50-34 91.5t-75 64.5-75.5 50.5-35.5 52.5h127v-60h105zm1409 319v192q0 13-9.5 22.5t-22.5 9.5h-1216q-13 0-22.5-9.5t-9.5-22.5v-192q0-14 9-23t23-9h1216q13 0 22.5 9.5t9.5 22.5zm-1408-899v99h-335v-99h107q0-41 .5-122t.5-121v-12h-2q-8 17-50 54l-71-76 136-127h106v404h108zm1408 387v192q0 13-9.5 22.5t-22.5 9.5h-1216q-13 0-22.5-9.5t-9.5-22.5v-192q0-14 9-23t23-9h1216q13 0 22.5 9.5t9.5 22.5zm0-512v192q0 13-9.5 22.5t-22.5 9.5h-1216q-13 0-22.5-9.5t-9.5-22.5v-192q0-13 9.5-22.5t22.5-9.5h1216q13 0 22.5 9.5t9.5 22.5z"/></svg>';
 
 /***/ },
-/* 190 */
+/* 189 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -31308,7 +31294,7 @@
 	module.exports = '<svg width="1792" height="1792" viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg"><path d="M832 960v384q0 80-56 136t-136 56h-384q-80 0-136-56t-56-136v-704q0-104 40.5-198.5t109.5-163.5 163.5-109.5 198.5-40.5h64q26 0 45 19t19 45v128q0 26-19 45t-45 19h-64q-106 0-181 75t-75 181v32q0 40 28 68t68 28h224q80 0 136 56t56 136zm896 0v384q0 80-56 136t-136 56h-384q-80 0-136-56t-56-136v-704q0-104 40.5-198.5t109.5-163.5 163.5-109.5 198.5-40.5h64q26 0 45 19t19 45v128q0 26-19 45t-45 19h-64q-106 0-181 75t-75 181v32q0 40 28 68t68 28h224q80 0 136 56t56 136z"/></svg>';
 
 /***/ },
-/* 191 */
+/* 190 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// CodeMirror, copyright (c) by Marijn Haverbeke and others
@@ -31316,7 +31302,7 @@
 
 	(function(mod) {
 	  if (true) // CommonJS
-	    mod(__webpack_require__(182));
+	    mod(__webpack_require__(181));
 	  else if (typeof define == "function" && define.amd) // AMD
 	    define(["../../lib/codemirror"], mod);
 	  else // Plain browser env
@@ -31708,7 +31694,7 @@
 
 
 /***/ },
-/* 192 */
+/* 191 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// CodeMirror, copyright (c) by Marijn Haverbeke and others
@@ -31716,7 +31702,7 @@
 
 	(function(mod) {
 	  if (true) // CommonJS
-	    mod(__webpack_require__(182), __webpack_require__(191), __webpack_require__(193));
+	    mod(__webpack_require__(181), __webpack_require__(190), __webpack_require__(192));
 	  else if (typeof define == "function" && define.amd) // AMD
 	    define(["../../lib/codemirror", "../xml/xml", "../meta"], mod);
 	  else // Plain browser env
@@ -32522,7 +32508,7 @@
 
 
 /***/ },
-/* 193 */
+/* 192 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// CodeMirror, copyright (c) by Marijn Haverbeke and others
@@ -32530,7 +32516,7 @@
 
 	(function(mod) {
 	  if (true) // CommonJS
-	    mod(__webpack_require__(182));
+	    mod(__webpack_require__(181));
 	  else if (typeof define == "function" && define.amd) // AMD
 	    define(["../lib/codemirror"], mod);
 	  else // Plain browser env
@@ -32742,7 +32728,7 @@
 
 
 /***/ },
-/* 194 */
+/* 193 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// CodeMirror, copyright (c) by Marijn Haverbeke and others
@@ -32750,7 +32736,7 @@
 
 	(function(mod) {
 	  if (true) // CommonJS
-	    mod(__webpack_require__(182));
+	    mod(__webpack_require__(181));
 	  else if (typeof define == "function" && define.amd) // AMD
 	    define(["../../lib/codemirror"], mod);
 	  else // Plain browser env
@@ -32799,7 +32785,7 @@
 
 
 /***/ },
-/* 195 */
+/* 194 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -32929,7 +32915,7 @@
 	};
 
 /***/ },
-/* 196 */
+/* 195 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -32939,7 +32925,7 @@
 	Object.defineProperty(exports, "__esModule", {
 		value: true
 	});
-	exports.MDRender = undefined;
+	exports.ReactMDViewer = undefined;
 
 	var _createClass = function () {
 		function defineProperties(target, props) {
@@ -32955,9 +32941,9 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _server = __webpack_require__(197);
+	var _server = __webpack_require__(196);
 
-	var _marked = __webpack_require__(201);
+	var _marked = __webpack_require__(200);
 
 	var _marked2 = _interopRequireDefault(_marked);
 
@@ -32983,13 +32969,13 @@
 		}subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } });if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass;
 	}
 
-	var MDRender = exports.MDRender = function (_Component) {
-		_inherits(MDRender, _Component);
+	var ReactMDViewer = exports.ReactMDViewer = function (_Component) {
+		_inherits(ReactMDViewer, _Component);
 
-		function MDRender(props) {
-			_classCallCheck(this, MDRender);
+		function ReactMDViewer(props) {
+			_classCallCheck(this, ReactMDViewer);
 
-			var _this = _possibleConstructorReturn(this, (MDRender.__proto__ || Object.getPrototypeOf(MDRender)).call(this, props));
+			var _this = _possibleConstructorReturn(this, (ReactMDViewer.__proto__ || Object.getPrototypeOf(ReactMDViewer)).call(this, props));
 
 			_this.state = {
 				renderer: new _marked2.default.Renderer()
@@ -32997,7 +32983,7 @@
 			return _this;
 		}
 
-		_createClass(MDRender, [{
+		_createClass(ReactMDViewer, [{
 			key: 'componentDidMount',
 			value: function componentDidMount() {
 				this.updateRenderer();
@@ -33078,10 +33064,10 @@
 			}
 		}]);
 
-		return MDRender;
+		return ReactMDViewer;
 	}(_react.Component);
 
-	MDRender.propTypes = {
+	ReactMDViewer.propTypes = {
 		text: _react2.default.PropTypes.string,
 		heading: _react2.default.PropTypes.func,
 		code: _react2.default.PropTypes.func,
@@ -33102,18 +33088,19 @@
 		link: _react2.default.PropTypes.func,
 		image: _react2.default.PropTypes.func
 	};
+	exports.default = ReactMDViewer;
 
 /***/ },
-/* 197 */
+/* 196 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	module.exports = __webpack_require__(198);
+	module.exports = __webpack_require__(197);
 
 
 /***/ },
-/* 198 */
+/* 197 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -33129,7 +33116,7 @@
 	'use strict';
 
 	var ReactDefaultInjection = __webpack_require__(38);
-	var ReactServerRendering = __webpack_require__(199);
+	var ReactServerRendering = __webpack_require__(198);
 	var ReactVersion = __webpack_require__(171);
 
 	ReactDefaultInjection.inject();
@@ -33143,7 +33130,7 @@
 	module.exports = ReactDOMServer;
 
 /***/ },
-/* 199 */
+/* 198 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {/**
@@ -33165,7 +33152,7 @@
 	var ReactInstrumentation = __webpack_require__(62);
 	var ReactMarkupChecksum = __webpack_require__(169);
 	var ReactReconciler = __webpack_require__(59);
-	var ReactServerBatchingStrategy = __webpack_require__(200);
+	var ReactServerBatchingStrategy = __webpack_require__(199);
 	var ReactServerRenderingTransaction = __webpack_require__(133);
 	var ReactUpdates = __webpack_require__(56);
 
@@ -33238,7 +33225,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(3)))
 
 /***/ },
-/* 200 */
+/* 199 */
 /***/ function(module, exports) {
 
 	/**
@@ -33264,7 +33251,7 @@
 	module.exports = ReactServerBatchingStrategy;
 
 /***/ },
-/* 201 */
+/* 200 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(global) {/**
