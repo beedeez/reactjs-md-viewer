@@ -1,6 +1,6 @@
 {
   "name": "reactjs-md-viewer",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "A markdown viewer module for React",
   "main": "lib/reactjs-md-viewer.js",
   "scripts": {
@@ -24,10 +24,12 @@
     "url": "https://github.com/beedeez/reactjs-md-viewer/issues"
   },
   "homepage": "https://github.com/beedeez/reactjs-md-viewer#readme",
-	"dependencies": {
-		"marked": "^0.3.6"
-	},
-	"devDependencies": {
+  "dependencies": {
+    "commonmark": "^0.27.0",
+    "commonmark-react-renderer": "^4.3.2",
+    "prop-types": "^15.0.0"
+  },
+  "devDependencies": {
     "babel-core": "^6.24.0",
     "babel-loader": "^6.4.1",
     "babel-plugin-transform-class-properties": "^6.23.0",
@@ -37,11 +39,13 @@
     "express": "^4.15.2",
     "gulp": "^3.9.1",
     "gulp-babel": "^6.1.2",
+    "json-loader": "^0.5.4",
     "morgan": "^1.8.1",
+    "prop-types": "^15.5.8",
     "react": "^15.0",
     "react-dom": "^15.0",
-		"reactjs-md-editor": "git+https://github.com/beedeez/reactjs-md-editor.git",
-		"webpack": "^2.3.3",
+    "reactjs-md-editor": "git+https://github.com/beedeez/reactjs-md-editor.git",
+    "webpack": "^2.3.3",
     "webpack-stream": "^3.2.0"
   },
   "peersDependencies": {

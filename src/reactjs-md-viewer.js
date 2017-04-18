@@ -1,86 +1,97 @@
 import React, { Component } from 'react';
 import { renderToString } from 'react-dom/server';
-import marked, { Renderer } from 'marked';
+import CommonMark from 'commonmark';
+import ReactRenderer from 'commonmark-react-renderer';
+import PropTypes from 'prop-types'
+const parser = new CommonMark.Parser();
 
 export class ReactMDViewer extends Component {
 	static propTypes = {
-		text: React.PropTypes.string,
-		heading: React.PropTypes.func,
-		code: React.PropTypes.func,
-		blockquote: React.PropTypes.func,
-		html: React.PropTypes.func,
-		hr: React.PropTypes.func,
-		list: React.PropTypes.func,
-		listitem: React.PropTypes.func,
-		paragraph: React.PropTypes.func,
-		table: React.PropTypes.func,
-		tablerow: React.PropTypes.func,
-		tablecell: React.PropTypes.func,
-		strong: React.PropTypes.func,
-		em: React.PropTypes.func,
-		codespan: React.PropTypes.func,
-		br: React.PropTypes.func,
-		del: React.PropTypes.func,
-		link: React.PropTypes.func,
-		image: React.PropTypes.func
+		text: PropTypes.string,
+		htmlblock: PropTypes.func,
+		htmlinline: PropTypes.func,
+		codeblock: PropTypes.func,
+		code: PropTypes.func,
+		heading: PropTypes.func,
+		link: PropTypes.func,
+		image: PropTypes.func,
+		list: PropTypes.func,
+		listitem: PropTypes.func,
+		common: PropTypes.func,
+		paragraph: PropTypes.func,
+		blockquote: PropTypes.func,
+		strong: PropTypes.func,
+		hr: PropTypes.func,
+		em: PropTypes.func,
+		br: PropTypes.func,
+		softbreak: PropTypes.func
 	}
 	constructor(props) {
     super(props);
     this.state = {
-			renderer: new marked.Renderer()
+			renderer: new ReactRenderer()
 		};
   }
 	componentDidMount() {
 		this.updateRenderer();
 	}
 	componentWillReceiveProps(newProps) {
-		if (newProps.heading != this.props.heading
+		if (
+			newProps.htmlblock != this.props.htmlblock
+			|| newProps.htmlinline != this.props.htmlinline
+			|| newProps.codeblock != this.props.codeblock
 			|| newProps.code != this.props.code
-			|| newProps.blockquote != this.props.blockquote
-			|| newProps.html != this.props.html
-			|| newProps.hr != this.props.hr
-			|| newProps.list != this.props.list
-			|| newProps.listitem != this.props.listitem
-			|| newProps.paragraph != this.props.paragraph
-			|| newProps.table != this.props.table
-			|| newProps.tablerow != this.props.tablerow
-			|| newProps.tablecell != this.props.tablecell
-			|| newProps.strong != this.props.strong
-			|| newProps.em != this.props.em
-			|| newProps.codespan != this.props.codespan
-			|| newProps.br != this.props.br
-			|| newProps.del != this.props.del
+			|| newProps.heading != this.props.heading
 			|| newProps.link != this.props.link
 			|| newProps.image != this.props.image
+			|| newProps.list != this.props.list
+			|| newProps.listitem != this.props.listitem
+			|| newProps.common != this.props.common
+			|| newProps.paragraph != this.props.paragraph
+			|| newProps.blockquote != this.props.blockquote
+			|| newProps.strong != this.props.strong
+			|| newProps.hr != this.props.hr
+			|| newProps.em != this.props.em
+			|| newProps.br != this.props.br
+			|| newProps.softbreak != this.props.softbreak
 		) {
 			this.updateRenderer();
 		}
 	}
 	updateRenderer() {
-		const renderer = new marked.Renderer();
-		if (this.props.heading) renderer.heading = (text, level) => renderToString(<this.props.heading text={text} level={level}/>);
-		if (this.props.code) renderer.code = (code, language) => renderToString(<this.props.code code={code} langage={language}/>);
-		if (this.props.blockquote) renderer.blockquote = (quote) => renderToString(<this.props.blockquote quote={quote}/>);
-		if (this.props.html) renderer.html = (html) => renderToString(<this.props.html html={html}/>);
-		if (this.props.hr) renderer.hr = () => renderToString(<this.props.hr />);
-		if (this.props.list) renderer.list = (body, ordered) => renderToString(<this.props.list body={body} ordered={ordered}/>);
-		if (this.props.listitem) renderer.listitem = (text) => renderToString(<this.props.listitem text={text}/>);
-		if (this.props.paragraph) renderer.paragraph = (text) => renderToString(<this.props.paragraph text={text}/>);
-		if (this.props.table) renderer.table = (header, body) => renderToString(<this.props.table header={header} body={body}/>);
-		if (this.props.tablerow) renderer.tablerow = (content) => renderToString(<this.props.tablerow content={content}/>);
-		if (this.props.tablecell) renderer.tablecell = (content, flags) => renderToString(<this.props.tablecell content={content} flags={flags}/>);
-		if (this.props.strong) renderer.strong = (text) => renderToString(<this.props.strong text={text}/>);
-		if (this.props.em) renderer.em = (text) => renderToString(<this.props.em text={text}/>);
-		if (this.props.codespan) renderer.codespan = (code) => renderToString(<this.props.codespan code={code}/>);
-		if (this.props.br) renderer.br = () => renderToString(<this.props.br />);
-		if (this.props.del) renderer.del = (text) => renderToString(<this.props.del text={text}/>);
-		if (this.props.link) renderer.link = (href, title, text) => renderToString(<this.props.link href={href} title={title} text={text}/>);
-		if (this.props.image) renderer.image = (href, title, text) => renderToString(<this.props.image href={href} title={title} text={text}/>);
-		this.setState({renderer: renderer});
+		const renderers = {};
+
+		if (this.props.htmlblock) renderers.HtmlBlock = (props) => <this.props.htmlblock {...props}/>;
+		if (this.props.htmlinline) renderers.HtmlInline = (props) => <this.props.htmlinline {...props}/>;
+		if (this.props.codeblock) renderers.CodeBlock = (props) => <this.props.codeblock {...props}/>;
+		if (this.props.code) renderers.Code = (props) => <this.props.code {...props}/>;
+		if (this.props.heading) renderers.Heading = (props) => <this.props.heading {...props}/>;
+		if (this.props.link) renderers.Link = (props) => <this.props.link {...props}/>;
+		if (this.props.image) renderers.Image = (props) => <this.props.image {...props}/>;
+
+		if (this.props.list) renderers.List = (props) => <this.props.list {...props}/>;
+		if (this.props.listitem) renderers.Item = (props) => <this.props.listitem {...props}/>;
+
+		if (this.props.common) renderers.Common = (props) => <this.props.common {...props}/>;
+		if (this.props.paragraph) renderers.Paragraph = (props) => <this.props.paragraph {...props}/>;
+		if (this.props.blockquote) renderers.Blockquote = (props) => <this.props.blockquote {...props}/>;
+
+		if (this.props.strong) renderers.strong = (props) => <this.props.strong {...props}/>;
+		if (this.props.hr) renderers.ThematicBreak = (props) => <this.props.hr {...props}/>;
+		if (this.props.em) renderers.Emph = (props) => <this.props.em {...props}/>;
+		if (this.props.br) renderers.LineBreak = (props) => <this.props.br {...props}/>;
+		if (this.props.softbreak) renderers.SoftBreak = (props) => <this.props.softbreak {...props}/>;
+
+		this.setState({renderer: new ReactRenderer({
+			renderers
+		})});
 	}
 	render () {
+
 		return (
-			<div className="MDRender" dangerouslySetInnerHTML={{ __html: marked(this.props.text, { renderer: this.state.renderer }) }} />
+			<div className="MDRender">
+				{this.state.renderer.render(parser.parse(this.props.text))}
+			</div>
 		);
 	}
 }

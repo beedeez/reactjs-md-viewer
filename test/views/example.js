@@ -6,7 +6,7 @@ import ReactDOM from 'react-dom';
 
 class MyHeading extends Component {
 	render() {
-		return (<h1 style={{color: 'red'}}>{this.props.text || "test"}</h1>);
+		return (<h1 style={{color: 'red'}}>{this.props.children}</h1>);
 	}
 }
 
