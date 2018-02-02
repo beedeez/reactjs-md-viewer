@@ -1,6 +1,6 @@
 {
   "name": "reactjs-md-viewer",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "A markdown viewer module for React",
   "main": "lib/reactjs-md-viewer.js",
   "scripts": {
